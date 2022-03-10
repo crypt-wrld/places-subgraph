@@ -1,0 +1,16 @@
+{
+  "name": "cw-buildings",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ mfron-42/cw-buildings",
+    "create-local": "graph create --node http://localhost:8020/ mfron-42/cw-buildings",
+    "remove-local": "graph remove --node http://localhost:8020/ mfron-42/cw-buildings",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 mfron-42/cw-buildings"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.27.0",
+    "@graphprotocol/graph-ts": "0.24.1"
+  }
+}

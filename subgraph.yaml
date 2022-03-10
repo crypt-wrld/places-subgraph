@@ -1,0 +1,29 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Buildings
+    network: bsc
+    source:
+      address: "0x1cCc593955Ca62b446274A701793BA216B2ba506"
+      abi: Buildings
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - OnPlaceAdd
+        - OnPlaceRemove
+        - OwnershipTransferred
+      abis:
+        - name: Buildings
+          file: ./abis/Buildings.json
+      eventHandlers:
+        - event: OnPlaceAdd(address)
+          handler: handleOnPlaceAdd
+        - event: OnPlaceRemove(address)
+          handler: handleOnPlaceRemove
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/mapping.ts
