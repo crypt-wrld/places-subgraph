@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Buildings
@@ -13,15 +13,15 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: ./mappings/buildings.ts
+      file: Buildings\Buildings.wasm
       entities:
         - OnPlaceAdd
         - OnPlaceRemove
       abis:
         - name: Buildings
-          file: ./abis/Buildings.json
+          file: Buildings\abis\Buildings.json
         - name: Place
-          file: ./abis/Place.json
+          file: Buildings\abis\Place.json
       eventHandlers:
         - event: OnPlaceAdd(address)
           handler: handleOnPlaceAdd
@@ -37,7 +37,7 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: ./mappings/place.ts
+      file: templates\PlaceTemplate\PlaceTemplate.wasm
       entities:
         - Place
         - Approval
@@ -63,7 +63,7 @@ templates:
         - OnClaimIntervalChanged
       abis:
         - name: Place
-          file: ./abis/Place.json
+          file: PlaceTemplate\abis\Place.json
       eventHandlers:
         - event: OnActivationFeesChange(uint256[],uint256[])
           handler: handleOnActivationFeesChange
@@ -85,7 +85,7 @@ templates:
           handler: handleOnSaleFeeFlatChange
         - event: OnSaleFeePercentChange(uint256)
           handler: handleOnSaleFeePercentChange
-        - event:  OnSaleOfferCreate(uint256,uint256)
+        - event: OnSaleOfferCreate(uint256,uint256)
           handler: handleOnSaleOfferCreate
         - event: OnSaleComplete(uint256)
           handler: handleOnSaleComplete

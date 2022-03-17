@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ mfron-42/cw-buildings",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ethereum-rpc bsc:https://speedy-nodes-nyc.moralis.io/fb92d513075e9d89e47c227f/bsc/mainnet/archive  mfron-42/cw-buildings",
     "create-local": "graph create --node http://localhost:8020/ mfron-42/cw-buildings",
     "remove-local": "graph remove --node http://localhost:8020/ mfron-42/cw-buildings",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 mfron-42/cw-buildings"
