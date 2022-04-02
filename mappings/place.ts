@@ -1,4 +1,4 @@
-import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
+import { Address, BigInt, Bytes, log } from "@graphprotocol/graph-ts"
 import { concat } from "@graphprotocol/graph-ts/helper-functions";
 import {
     OnSaleFeeFlatChange,
@@ -129,6 +129,9 @@ export function handleOnRewardsChange(event: OnRewardsChange): void {
 export function handleOnTreasuryAddressChange(
   event: OnTreasuryAddressChange
 ): void {
+    log.warning("Treasury change test : " + event.params.treasuryAddress, new Array<string>());
+    var placeContract = PlaceContract.bind(event.address);
+    log.warning("Treasury change test2 : " + placeContract.treasury(), new Array<string>());
     var placeId = event.address.toHex();
     var place = Place.load(placeId) as Place;
     place.tresory = event.params.treasuryAddress;
@@ -156,6 +159,7 @@ export function createInstance(id: string, placeAddress: Address, instanceId: Bi
 } 
 
 export function handleTransfer(event: Transfer): void {
+    log.warning("Token transfer from " + event.params.from + " to " + event.params.to + "token id : " + event.params.tokenId, new Array<string>());
     var instanceId = getInstanceId(event.address, event.params.tokenId);
     var instance = (Instance.load(instanceId) || createInstance(instanceId, event.address, event.params.tokenId)) as Instance;
     instance.owner = event.params.to;
