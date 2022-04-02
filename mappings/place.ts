@@ -129,9 +129,9 @@ export function handleOnRewardsChange(event: OnRewardsChange): void {
 export function handleOnTreasuryAddressChange(
   event: OnTreasuryAddressChange
 ): void {
-    log.warning("Treasury change test : " + event.params.treasuryAddress, new Array<string>());
+    log.warning("Treasury change test : " + event.params.treasuryAddress.toHex(), new Array<string>());
     var placeContract = PlaceContract.bind(event.address);
-    log.warning("Treasury change test2 : " + placeContract.treasury(), new Array<string>());
+    log.warning("Treasury change test2 : " + placeContract.treasury().toHex(), new Array<string>());
     var placeId = event.address.toHex();
     var place = Place.load(placeId) as Place;
     place.tresory = event.params.treasuryAddress;
@@ -159,7 +159,7 @@ export function createInstance(id: string, placeAddress: Address, instanceId: Bi
 } 
 
 export function handleTransfer(event: Transfer): void {
-    log.warning("Token transfer from " + event.params.from + " to " + event.params.to + "token id : " + event.params.tokenId, new Array<string>());
+    log.warning("Token transfer from " + event.params.from.toHex() + " to " + event.params.to.toHex() + "token id : " + event.params.tokenId.toString(), new Array<string>());
     var instanceId = getInstanceId(event.address, event.params.tokenId);
     var instance = (Instance.load(instanceId) || createInstance(instanceId, event.address, event.params.tokenId)) as Instance;
     instance.owner = event.params.to;
