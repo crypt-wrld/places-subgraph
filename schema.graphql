@@ -11,6 +11,7 @@ type Place @entity {
   rewardItems: [BigInt!]!
   rewardAmounts:[BigInt!]!
   supply: BigInt!
+  maxSupply: BigInt!
   enabled: Boolean!
   itemCollection: Bytes!
   tresory: Bytes!

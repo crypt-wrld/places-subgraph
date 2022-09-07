@@ -11,8 +11,7 @@ export function handleOnPlaceAdd(event: OnPlaceAdd): void {
   var placeAddress = event.params.placeAddress;
   var placeId = placeAddress.toHex();
   var place = Place.load(placeId);
-  if (place != null)
-  {
+  if (place != null) {
     place.enabled = true;
     place.save();
     return;
@@ -32,10 +31,11 @@ export function handleOnPlaceRemove(event: OnPlaceRemove): void {
   place.save();
 }
 
-function createPlace(id : string, placeContract: PlaceContract) : Place {
-  var place =  new Place(id);
+function createPlace(id: string, placeContract: PlaceContract): Place {
+  var place = new Place(id);
   place.name = placeContract.name();
   place.symbol = placeContract.symbol();
+  place.maxSupply = place.maxSupply();
   place.baseUri = placeContract.baseUri();
   place.saleFeeFlat = placeContract.feeFlat();
   place.saleFeePercent = placeContract.feePercent();
@@ -45,7 +45,7 @@ function createPlace(id : string, placeContract: PlaceContract) : Place {
   place.rewardAmounts = new Array<BigInt>();
   place.rewardItems = new Array<BigInt>();
   place.activationRequirementsAmounts = new Array<BigInt>();
-  place.activationRequirementsItems = new Array<BigInt>(); 
+  place.activationRequirementsItems = new Array<BigInt>();
   place.supply = BigInt.fromI32(0);
   place.claimInterval = placeContract.claimInterval();
   place.itemCollection = placeContract.gameItems();
