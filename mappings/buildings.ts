@@ -35,7 +35,7 @@ function createPlace(id: string, placeContract: PlaceContract): Place {
   var place = new Place(id);
   place.name = placeContract.name();
   place.symbol = placeContract.symbol();
-  place.maxSupply = place.maxSupply();
+  place.maxSupply = placeContract.maxSupply();
   place.baseUri = placeContract.baseUri();
   place.saleFeeFlat = placeContract.feeFlat();
   place.saleFeePercent = placeContract.feePercent();
