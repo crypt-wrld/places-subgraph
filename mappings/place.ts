@@ -7,7 +7,7 @@ import {
   OnSaleComplete,
   OnSaleOfferRevoke,
   OnActivationFeesChange,
-  OnActivationRequirementsChange,
+  OnRequirementsChange,
   OnClaimReward,
   OnGameItemsAddressChange,
   OnInstanceActivate,
@@ -30,13 +30,13 @@ export function handleOnActivationFeesChange(
   place.save();
 }
 
-export function handleOnActivationRequirementsChange(
-  event: OnActivationRequirementsChange
+export function handleOnRequirementsChange(
+  event: OnRequirementsChange
 ): void {
   var placeId = event.address.toHex();
   var place = Place.load(placeId) as Place;
-  place.activationRequirementsItems = event.params.tokenIds;
-  place.activationRequirementsAmounts = event.params.amounts;
+  place.requirementsItems = event.params.tokenIds;
+  place.requirementsAmounts = event.params.amounts;
   place.save();
 }
 

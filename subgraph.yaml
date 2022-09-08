@@ -43,7 +43,7 @@ templates:
         - Approval
         - ApprovalForAll
         - OnActivationFeesChange
-        - OnActivationRequirementsChange
+        - OnRequirementsChange
         - OnClaimReward
         - OnGameItemsAddressChange
         - OnInstanceActivate
@@ -67,8 +67,8 @@ templates:
       eventHandlers:
         - event: OnActivationFeesChange(uint256[],uint256[])
           handler: handleOnActivationFeesChange
-        - event: OnActivationRequirementsChange(uint256[],uint256[])
-          handler: handleOnActivationRequirementsChange
+        - event: OnRequirementsChange(uint256[],uint256[])
+          handler: handleOnRequirementsChange
         - event: OnClaimReward(uint256,uint256[],uint256[])
           handler: handleOnClaimReward
         - event: OnGameItemsAddressChange(address)

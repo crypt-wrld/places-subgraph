@@ -6,8 +6,8 @@ type Place @entity {
   instances: [Instance!]!
   activationFeesItems: [BigInt!]!
   activationFeesAmounts:[BigInt!]!
-  activationRequirementsItems: [BigInt!]!
-  activationRequirementsAmounts: [BigInt!]!
+  requirementsItems: [BigInt!]!
+  requirementsAmounts: [BigInt!]!
   rewardItems: [BigInt!]!
   rewardAmounts:[BigInt!]!
   supply: BigInt!

@@ -44,8 +44,8 @@ function createPlace(id: string, placeContract: PlaceContract): Place {
   place.activationFeesItems = new Array<BigInt>();
   place.rewardAmounts = new Array<BigInt>();
   place.rewardItems = new Array<BigInt>();
-  place.activationRequirementsAmounts = new Array<BigInt>();
-  place.activationRequirementsItems = new Array<BigInt>();
+  place.requirementsAmounts = new Array<BigInt>();
+  place.requirementsItems = new Array<BigInt>();
   place.supply = BigInt.fromI32(0);
   place.claimInterval = placeContract.claimInterval();
   place.itemCollection = placeContract.gameItems();
