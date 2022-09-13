@@ -64,8 +64,7 @@ export function handleOnClaimReward(event: OnClaimReward): void {
   var instance = Instance.load(instanceId) as Instance;
   var claimId = getClaimId(instanceId, event.block.number);
   var claim = Claim.load(claimId);
-  if (claim) return;
-  claim = new Claim(claimId);
+  if (!claim) claim = new Claim(claimId);
   claim.place = placeId;
   claim.instance = instanceId;
   claim.claimedAmounts = event.params.amounts;
@@ -99,8 +98,7 @@ export function handleOnInstanceActivate(event: OnInstanceActivate): void {
   var instance = Instance.load(instanceId) as Instance;
   var activationId = getActivationId(instanceId, event.block.number);
   var activation = Activation.load(activationId);
-  if (activation) return;
-  activation = new Activation(activationId);
+  if (!activation) activation = new Activation(activationId);
   activation.place = instance.place;
   activation.instance = instanceId;
   activation.owner = instance.owner;
@@ -202,9 +200,8 @@ export function handleOnSaleComplete(
   var instanceId = getInstanceId(event.address, event.params.instanceId);
   var purchaseId = getPurchaseId(instanceId, event.block.number);
   var purchase = Purchase.load(purchaseId);
-  if (purchase) return;
+  if (!purchase) purchase = new Purchase(purchaseId);
   var instance = Instance.load(instanceId) as Instance;
-  purchase = new Purchase(purchaseId);
   purchase.buyer = event.transaction.from;
   purchase.seller = instance.owner;
   purchase.price = instance.price;
