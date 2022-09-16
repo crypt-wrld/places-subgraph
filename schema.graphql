@@ -10,6 +10,8 @@ type Place @entity {
   requirementsAmounts: [BigInt!]!
   rewardItems: [BigInt!]!
   rewardAmounts:[BigInt!]!
+  mintTokens: [BigInt!]!
+  mintTokenAmounts:[BigInt!]!
   supply: BigInt!
   maxSupply: BigInt!
   enabled: Boolean!

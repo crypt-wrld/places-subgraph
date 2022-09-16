@@ -14,7 +14,8 @@ import {
   OnRewardsChange,
   OnTreasuryAddressChange,
   OnClaimIntervalChanged,
-  Transfer
+  Transfer,
+  OnMintPriceChange
 } from "../generated/Buildings/Place"
 import { Place as PlaceContract } from "../generated/Buildings/Place"
 import { Instance, Place, Claim, Activation, Purchase } from "../generated/schema"
@@ -60,7 +61,7 @@ export function getPurchaseId(instanceId: string, blockNumber: BigInt): string {
 
 export function handleOnClaimReward(event: OnClaimReward): void {
   var placeId = event.address.toHex();
-  var instanceId = getInstanceId(event.address, event.params.instaceId);
+  var instanceId = getInstanceId(event.address, event.params.instanceId);
   var instance = Instance.load(instanceId) as Instance;
   var claimId = getClaimId(instanceId, event.block.number);
   var claim = Claim.load(claimId);
@@ -121,6 +122,14 @@ export function handleOnRewardsChange(event: OnRewardsChange): void {
   var place = Place.load(placeId) as Place;
   place.rewardAmounts = event.params.rewardAmounts;
   place.rewardItems = event.params.tokenIds;
+  place.save();
+}
+
+export function handleOnMintPriceChange(event: OnMintPriceChange): void {
+  var placeId = event.address.toHex();
+  var place = Place.load(placeId) as Place;
+  place.mintTokens = event.params.tokenIds;
+  place.mintTokenAmounts = event.params.tokenIds;
   place.save();
 }
 

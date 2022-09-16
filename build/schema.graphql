@@ -6,11 +6,14 @@ type Place @entity {
   instances: [Instance!]!
   activationFeesItems: [BigInt!]!
   activationFeesAmounts:[BigInt!]!
-  activationRequirementsItems: [BigInt!]!
-  activationRequirementsAmounts: [BigInt!]!
+  requirementsItems: [BigInt!]!
+  requirementsAmounts: [BigInt!]!
   rewardItems: [BigInt!]!
   rewardAmounts:[BigInt!]!
+  mintTokens: [BigInt!]!
+  mintTokenAmounts:[BigInt!]!
   supply: BigInt!
+  maxSupply: BigInt!
   enabled: Boolean!
   itemCollection: Bytes!
   tresory: Bytes!
