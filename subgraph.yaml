@@ -71,9 +71,9 @@ templates:
         - event: OnRequirementsChange(uint256[],uint256[])
           handler: handleOnRequirementsChange
         - event: OnClaimReward(uint256,uint256[],uint256[])
-          handler: handleOnMintPriceChange
-        - event: OnMintPriceChange(uint256[],uint256[])
           handler: handleOnClaimReward
+        - event: OnMintPriceChange(uint256[],uint256[])
+          handler: handleOnMintPriceChange
         - event: OnGameItemsAddressChange(address)
           handler: handleOnGameItemsAddressChange
         - event: OnInstanceActivate(uint256)
