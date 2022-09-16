@@ -129,7 +129,7 @@ export function handleOnMintPriceChange(event: OnMintPriceChange): void {
   var placeId = event.address.toHex();
   var place = Place.load(placeId) as Place;
   place.mintTokens = event.params.tokenIds;
-  place.mintTokenAmounts = event.params.tokenIds;
+  place.mintTokenAmounts = event.params.tokenAmounts;
   place.save();
 }
 
