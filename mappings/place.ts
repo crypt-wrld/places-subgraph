@@ -156,8 +156,7 @@ export function createInstance(id: string, placeAddress: Address, instanceId: Bi
   instance.activations = new Array<string>();
   instance.purchases = new Array<string>();
   instance.price = BigInt.fromI32(0);
-  if (instanceId >= place.supply)
-    place.supply = instanceId.plus(BigInt.fromI32(0));
+  place.supply = place.supply.plus(BigInt.fromI32(1));
   var instances = place.instances
   instances.push(id);
   place.instances = instances;
