@@ -62,6 +62,7 @@ templates:
         - OnSaleComplete
         - OnSaleOfferRevoke
         - OnClaimIntervalChanged
+        - OnMaxSupplyChanged
       abis:
         - name: Place
           file: ./abis/Place.json
@@ -96,3 +97,5 @@ templates:
           handler: handleOnSaleOfferRevoke
         - event: OnClaimIntervalChanged(uint256)
           handler: handleOnClaimIntervalChanged
+        - event: OnMaxSupplyChanged(uint256)
+          handler: handleOnMaxSupplyChanged

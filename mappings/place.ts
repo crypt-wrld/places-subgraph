@@ -15,7 +15,8 @@ import {
   OnTreasuryAddressChange,
   OnClaimIntervalChanged,
   Transfer,
-  OnMintPriceChange
+  OnMintPriceChange,
+  OnMaxSupplyChanged
 } from "../generated/Buildings/Place"
 import { Place as PlaceContract } from "../generated/Buildings/Place"
 import { Instance, Place, Claim, Activation, Purchase } from "../generated/schema"
@@ -170,6 +171,15 @@ export function handleTransfer(event: Transfer): void {
   var instance = (Instance.load(instanceId) || createInstance(instanceId, event.address, event.params.tokenId)) as Instance;
   instance.owner = event.params.to;
   instance.save();
+}
+
+export function handleOnMaxSupplyChanged(
+  event: OnMaxSupplyChanged
+): void {
+  var placeId = event.address.toHex();
+  var place = Place.load(placeId) as Place;
+  place.maxSupply = event.params.maxSupply;
+  place.save();
 }
 
 export function handleOnSaleFeeFlatChange(
