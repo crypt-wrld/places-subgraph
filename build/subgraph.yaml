@@ -6,22 +6,22 @@ dataSources:
     name: Buildings
     network: bsc
     source:
-      address: "0xA32bABFD8b585B5C0193c0fb9dD1A132379772f7"
+      address: "0xeB327F2D67aDE9775eE3E67B80757e8CaDdD8c9d"
       abi: Buildings
-      startBlock: 16126930
+      startBlock: 22171025
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: Buildings\Buildings.wasm
+      file: Buildings/Buildings.wasm
       entities:
         - OnPlaceAdd
         - OnPlaceRemove
       abis:
         - name: Buildings
-          file: Buildings\abis\Buildings.json
+          file: Buildings/abis/Buildings.json
         - name: Place
-          file: Buildings\abis\Place.json
+          file: Buildings/abis/Place.json
       eventHandlers:
         - event: OnPlaceAdd(address)
           handler: handleOnPlaceAdd
@@ -37,7 +37,7 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: templates\PlaceTemplate\PlaceTemplate.wasm
+      file: templates/PlaceTemplate/PlaceTemplate.wasm
       entities:
         - Place
         - Approval
@@ -65,7 +65,7 @@ templates:
         - OnMaxSupplyChanged
       abis:
         - name: Place
-          file: PlaceTemplate\abis\Place.json
+          file: PlaceTemplate/abis/Place.json
       eventHandlers:
         - event: OnActivationFeesChange(uint256[],uint256[])
           handler: handleOnActivationFeesChange
